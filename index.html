@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sreecharan Uppala | Data Analytics & Full-Stack Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0077b6;
+      --secondary: #00b4d8;
+      --dark: #023e8a;
+      --light: #caf0f8;
+      --accent: #ff9e00;
+    }
+    
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 80px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-title {
+      font-weight: 700;
+      margin: 80px 0 40px;
+      position: relative;
+      font-size: 2rem;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 80px;
+    }
+    
+    .card {
+      border-radius: 15px;
+      border: none;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      height: 100%;
+      border-left: 4px solid var(--secondary);
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 180, 216, 0.2);
+    }
+    
+    .card-header {
+      background: white;
+      border-bottom: none;
+      font-weight: 600;
+      color: var(--dark);
+      padding: 15px 20px;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+    }
+    
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: white;
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .progress {
+      height: 8px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    
+    .progress-bar {
+      background-color: var(--secondary);
+    }
+    
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--secondary);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 30px;
+    }
+    
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--secondary);
+    }
+    
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    
+    .timeline-title {
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    
+    .timeline-text {
+      color: #666;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .nav-pills .nav-link.active {
+      background: var(--secondary);
+    }
+    
+    .nav-pills .nav-link {
+      color: var(--dark);
+      font-weight: 500;
+      border-radius: 30px;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-pills .nav-link:hover {
+      color: var(--secondary);
+    }
+    
+    .project-filter {
+      margin-bottom: 30px;
+    }
+    
+    .filter-btn {
+      margin: 5px;
+      border-radius: 20px;
+      padding: 5px 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-btn.active {
+      background: var(--secondary);
+      color: white;
+      border-color: var(--secondary);
+    }
+    
+    .project-item {
+      transition: all 0.5s ease;
+    }
+    
+    .project-item.hide {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      transform: scale(0);
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--dark);
+      transform: translateY(-3px);
+    }
+    
+    .tag {
+      display: inline-block;
+      background: var(--light);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin: 2px;
+      font-weight: 500;
+    }
+    
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .highlight {
+      background: linear-gradient(120deg, rgba(0, 180, 216, 0.3), rgba(0, 180, 216, 0));
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
+  <!-- Navigation -->
+  <nav id="navbar-example" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sreecharan Uppala</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#education">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-4 text-center mb-4 mb-lg-0">
+          <img src="./SREE.jpg" alt="Sreecharan Uppala" class="profile-img rounded-circle animate__animated animate__fadeIn floating" />
+        </div>
+        <div class="col-lg-8 text-lg-start text-center">
+          <h1 class="animate__animated animate__fadeInDown">Sreecharan Uppala</h1>
+          <h2 class="animate__animated animate__fadeIn animate__delay-1s">Data Analytics Enthusiast <span class="text-accent">|</span> Full‑Stack Developer</h2>
+          <p class="lead animate__animated animate__fadeIn animate__delay-1s"><em>Turning data into insights and ideas into applications</em></p>
+          
+          <div class="d-flex justify-content-lg-start justify-content-center mt-4 animate__animated animate__fadeIn animate__delay-2s">
+            <a href="mailto:uppalasreecharan@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/uppala-sreecharan-aa083a2ab" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/sricharan153" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#contact" class="btn btn-primary ms-3">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container py-5">
+    <!-- ABOUT -->
+    <section id="about" class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">About Me</h2>
+      <div class="row">
+        <div class="col-lg-6 animate__animated animate__fadeInLeft">
+          <p>I'm a passionate <span class="highlight">Computer Science Engineering student</span> with a strong interest in data analytics and full-stack development. I enjoy transforming raw data into meaningful insights and building interactive web applications that solve real-world problems.</p>
+          <p>With a solid foundation in both frontend and backend technologies, I strive to create seamless user experiences while ensuring robust functionality. My journey in tech is driven by curiosity and a constant desire to learn and grow.</p>
+        </div>
+        <div class="col-lg-6 animate__animated animate__fadeInRight">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="card-title">Personal Information</h5>
+              <ul class="list-unstyled">
+                <li class="mb-2"><i class="fas fa-calendar-alt me-2 text-accent"></i> <strong>Age:</strong> 20</li>
+                <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-accent"></i> <strong>Location:</strong> Hyderabad, India</li>
+                <li class="mb-2"><i class="fas fa-graduation-cap me-2 text-accent"></i> <strong>Education:</strong> B.E. Computer Science</li>
+                <li class="mb-2"><i class="fas fa-briefcase me-2 text-accent"></i> <strong>Interests:</strong> Data Science, Web Development</li>
+                <li class="mb-2"><i class="fas fa-code me-2 text-accent"></i> <strong>HackerRank:</strong> 500+ Problems Solved</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="education" class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">Education & Experience</h2>
+      <div class="row">
+        <div class="col-lg-6 animate__animated animate__fadeInLeft">
+          <h4 class="mb-4"><i class="fas fa-graduation-cap me-2 text-accent"></i> Education</h4>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2022 - 2026</div>
+              <h5 class="timeline-title">Malla Reddy Engineering College</h5>
+              <p class="timeline-text">B.E. in Computer Science Engineering<br>Current CGPA: 7.5</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2020 - 2022</div>
+              <h5 class="timeline-title">Sai Sri Junior College</h5>
+              <p class="timeline-text">MPC (Mathematics, Physics, Chemistry)<br>Percentage: 63%</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2019 - 2020</div>
+              <h5 class="timeline-title">Sri Chaitanya Techno School</h5>
+              <p class="timeline-text">Secondary School Certificate (SSC)<br>CGPA: 10.0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 animate__animated animate__fadeInRight">
+          <h4 class="mb-4"><i class="fas fa-briefcase me-2 text-accent"></i> Achievements</h4>
+          <div class="card shadow">
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <h5><i class="fas fa-trophy me-2 text-accent"></i> Problem Solving</h5>
+                  <p>Solved 500+ problems across HackerRank, CodeChef, and LeetCode platforms, demonstrating strong algorithmic thinking.</p>
+                </li>
+                <li class="mb-3">
+                  <h5><i class="fas fa-certificate me-2 text-accent"></i> AICTE IDE Bootcamp</h5>
+                  <p>Selected to participate in the prestigious IDE Bootcamp organized by AICTE at NIT Karnataka in September 2024.</p>
+                </li>
+                <li>
+                  <h5><i class="fas fa-award me-2 text-accent"></i> Academic Excellence</h5>
+                  <p>Achieved perfect 10.0 CGPA in SSC examinations, showcasing consistent academic performance.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">Technical Skills</h2>
+      <div class="row">
+        <div class="col-md-6 animate__animated animate__fadeInLeft">
+          <div class="skill-name">Frontend Development</div>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="tags mt-2">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          
+          <div class="skill-name mt-4">Backend Development</div>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="tags mt-2">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+          </div>
+        </div>
+        
+        <div class="col-md-6 animate__animated animate__fadeInRight">
+          <div class="skill-name">Programming Languages</div>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="tags mt-2">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          
+          <div class="skill-name mt-4">Data Analytics & Visualization</div>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="tags mt-2">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="section-title animate__animated animate__fadeIn">Projects</h2>
+      
+      <div class="project-filter text-center animate__animated animate__fadeIn">
+        <button class="btn btn-outline-primary filter-btn active" data-filter="all">All Projects</button>
+        <button class="btn btn-outline-primary filter-btn" data-filter="web">Web Development</button>
+        <button class="btn btn-outline-primary filter-btn" data-filter="data">Data Analytics</button>
+      </div>
+      
+      <div class="row g-4 project-container">
+        <!-- Project 1 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>E-Commerce Website</h5>
+            </div>
+            <div class="card-body">
+              <p>Responsive store with carousels, banners, and product videos.</p>
+              <div class="tags mb-3">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="https://github.com/sricharan153/E-Commerce-Website.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Food Waste Management</h5>
+            </div>
+            <div class="card-body">
+              <p>Platform for redistributing surplus food with real-time features.</p>
+              <div class="tags mb-3">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="https://github.com/sricharan153/MEALSAVER.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Travel Website</h5>
+            </div>
+            <div class="card-body">
+              <p>Travel guide site with image carousels and embedded tours.</p>
+              <div class="tags mb-3">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">Bootstrap</span>
+              </div>
+              <a href="https://github.com/sricharan153/TRAVEL-WEB-SITES.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 4 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>House Rental System UI</h5>
+            </div>
+            <div class="card-body">
+              <p>Created a sleek UI for a house rental platform using HTML, CSS, JS.</p>
+              <div class="tags mb-3">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="https://github.com/sricharan153/HouseRentalSystemUI-master.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 5 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Password Generator</h5>
+            </div>
+            <div class="card-body">
+              <p>Generates secure random passwords with copy-to-clipboard feature.</p>
+              <div class="tags mb-3">
+                <span class="tag">JavaScript</span>
+                <span class="tag">DOM</span>
+              </div>
+              <a href="https://github.com/sricharan153/Password-Generator.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 6 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Image Editing Tool</h5>
+            </div>
+            <div class="card-body">
+              <p>Web-based tool for basic image transformations and filters.</p>
+              <div class="tags mb-3">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Canvas API</span>
+              </div>
+              <a href="https://github.com/sricharan153/image-editing.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 7 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Tip Calculator</h5>
+            </div>
+            <div class="card-body">
+              <p>Calculates tip and total bill amount based on custom inputs.</p>
+              <div class="tags mb-3">
+                <span class="tag">JavaScript</span>
+                <span class="tag">DOM</span>
+              </div>
+              <a href="https://github.com/sricharan153/Tip-Calculator.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 8 - Web -->
+        <div class="col-md-4 project-item" data-category="web">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Voting Application</h5>
+            </div>
+            <div class="card-body">
+              <p>Basic voting app with UI for vote casting and result display.</p>
+              <div class="tags mb-3">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="https://github.com/sricharan153/Voting-Application-main.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 9 - Data -->
+        <div class="col-md-4 project-item" data-category="data">
+          <div class="card h-100 shadow">
+            <div class="card-header">
+              <h5>Power BI Dashboard</h5>
+            </div>
+            <div class="card-body">
+              <p>Interactive business dashboard using Power BI visuals.</p>
+              <div class="tags mb-3">
+                <span class="tag">Power BI</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">DAX</span>
+              </div>
+              <a href="https://github.com/sricharan153/powerbi.git" target="_blank" class="btn btn-sm btn-outline-primary">View Project <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+    <!-- CERTIFICATES -->
+    <section class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">Certifications</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">Frontend Development</h5>
+              <p class="card-text">Comprehensive certification covering modern HTML, CSS, and JavaScript techniques.</p>
+              <a href="https://drive.google.com/file/d/1I-NAgX1g-wICcgsef41RmcY6altXDabH/view" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">Python 101 for Data Science</h5>
+              <p class="card-text">IBM certification covering Python fundamentals for data analysis and visualization.</p>
+              <a href="https://drive.google.com/file/d/1wKSSl0sQPbNrRD1F5M0tIREZDA2WTA2Y/view" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">Microsoft Azure AI Fundamentals</h5>
+              <p class="card-text">Fundamentals of artificial intelligence and machine learning on Azure platform.</p>
+              <a href="https://drive.google.com/file/d/16K85Cb39dheglveZJbCMuCnYgNrtA3zs/view" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">Data Science and Analyst</h5>
+              <p class="card-text">Comprehensive training in data analysis techniques and tools.</p>
+              <a href="https://drive.google.com/file/d/1llnlVcTfZ3PqCVuvDpA_1hboRkkzp_YB/view" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">Power BI Certification</h5>
+              <p class="card-text">Training in creating interactive dashboards and data visualizations.</p>
+              <a href="https://drive.google.com/file/d/18_hfYkjI3w3hlKOJMyOXhIs3WHipzim4/view" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <h5 class="card-title">IDE Bootcamp at NIT Karnataka</h5>
+              <p class="card-text">Intensive development bootcamp focusing on innovation and entrepreneurship.</p>
+              <a href="https://drive.google.com/file/d/1q1zrn3JJC8Wa1hcnWu5YYqdBjZuDQwpB/view?usp=drive_link" target="_blank" class="btn btn-sm btn-outline-primary">View Certificate <i class="fas fa-external-link-alt ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- HOBBIES -->
+    <section class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">Hobbies & Interests</h2>
+      <div class="row g-4">
+        <div class="col-md-6 animate__animated animate__fadeInLeft">
+          <div class="card shadow h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-running fa-3x mb-3 text-accent"></i>
+              <h5>Running</h5>
+              <p>Regular marathon participant, combining physical endurance with mental discipline.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 animate__animated animate__fadeInRight">
+          <div class="card shadow h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-dumbbell fa-3x mb-3 text-accent"></i>
+              <h5>Fitness Training</h5>
+              <p>Dedicated to strength training and maintaining a healthy lifestyle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5">
+      <h2 class="section-title animate__animated animate__fadeIn">Get In Touch</h2>
+      <div class="row">
+        <div class="col-lg-6 animate__animated animate__fadeInLeft">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="card-title mb-4">Contact Information</h5>
+              <ul class="list-unstyled">
+                <li class="mb-3"><i class="fas fa-envelope me-3 text-accent"></i> uppalasreecharan@gmail.com</li>
+                <li class="mb-3"><i class="fab fa-linkedin me-3 text-accent"></i> linkedin.com/in/uppala-sreecharan</li>
+                <li class="mb-3"><i class="fab fa-github me-3 text-accent"></i> github.com/sricharan153</li>
+              </ul>
+              <div class="d-flex mt-4">
+                <a href="mailto:uppalasreecharan@gmail.com" class="btn btn-primary me-3"><i class="fas fa-paper-plane me-2"></i> Send Email</a>
+                <a href="https://linkedin.com/in/uppala-sreecharan" target="_blank" class="btn btn-outline-primary"><i class="fab fa-linkedin-in me-2"></i> LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 animate__animated animate__fadeInRight mt-4 mt-lg-0">
+          <div class="card shadow">
+            <div class="card-body">
+              <h5 class="card-title mb-4">Send Me a Message</h5>
+              <form>
+                <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                  <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+          <h5>Sreecharan Uppala</h5>
+          <p>Data Analytics Enthusiast | Full‑Stack Developer</p>
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <a href="mailto:uppalasreecharan@gmail.com" class="social-icon me-2"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/uppala-sreecharan" target="_blank" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/sricharan153" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+      <p class="mb-0">&copy; 2025 Sreecharan Uppala. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+    
+    // Animation on scroll
+    const animateElements = document.querySelectorAll('.animate__animated');
+    
+    const animateOnScroll = () => {
+      animateElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight - 100) {
+          const animationClass = element.classList.item(1);
+          element.classList.add(animationClass);
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+    <!-- Rest of the sections remain the same -->
+
+  
+    // Previous JavaScript remains the same
+    
+    // Project Filtering
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectItems = document.querySelectorAll('.project-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filterValue = this.getAttribute('data-filter');
+          
+          projectItems.forEach(item => {
+            if (filterValue === 'all') {
+              item.classList.remove('hide');
+            } else {
+              if (item.getAttribute('data-category') === filterValue) {
+                item.classList.remove('hide');
+              } else {
+                item.classList.add('hide');
+              }
+            }
+          });
+        });
+      });
+    });
+  
+
+  </script>
+</body>
+</html>
